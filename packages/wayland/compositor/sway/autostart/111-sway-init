@@ -54,7 +54,7 @@ do
         esac
         echo "${output} transform ${angle}" >> $SWAY_HOME/config
     else
-        echo "${output} resolution 1920x1080" >> $SWAY_HOME/config
+        # echo "${output} resolution 1920x1080" >> $SWAY_HOME/config
     fi
     status=$(cat ${connector}/status)
     if [ "$status" = "connected" ]; then
