@@ -1,0 +1,9 @@
+[Unit]
+Description=Handle monitor plug events
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sway-monitor-plugged.sh
+
+[Install]
+WantedBy=multi-user.target
