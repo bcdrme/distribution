@@ -5,8 +5,7 @@ After=essway.service
 [Service]
 Type=simple
 User=root
-Environment=HOME=/storage
-Environment=XDG_RUNTIME_DIR=/var/run/0-runtime-dir
+Environment=SWAYSOCK=/var/run/0-runtime-dir/sway-ipc.0.sock
 ExecStart=/usr/bin/sway-monitor-plugged.sh
 
 [Install]
