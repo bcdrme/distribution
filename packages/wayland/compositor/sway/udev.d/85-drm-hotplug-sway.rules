@@ -1,1 +1,1 @@
-KERNEL=="card*", SUBSYSTEM=="drm", ACTION=="change", RUN+="/usr/bin/systemctl start sway-monitor-toggle.service"
+KERNEL=="card*", SUBSYSTEM=="drm", ACTION=="add|change|remove|online|offline", RUN+="/usr/bin/systemctl start sway-monitor-toggle.service"

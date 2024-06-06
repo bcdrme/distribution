@@ -34,27 +34,28 @@ rm -f ${env_file}
 echo "WLR_DRM_DEVICES=/dev/dri/card${card_no}" >> ${env_file}
 echo "WLR_BACKENDS=drm,libinput" >> ${env_file}
 
-# Scan connectors
-card=/sys/class/drm/card${card_no}
-for connector in ${card}/card${card_no}*/
-do
-    con=$(basename $connector)
-    con=${con: +6}
-    output="output ${con}"
-    echo "${output} bg #000000 solid_color" >> $SWAY_HOME/config
-    echo "${output} max_render_time off" >> $SWAY_HOME/config
-    # If dsi check rotation
-    if [[ $con  == "DSI"* ]]; then
-        rot=$(cat /sys/class/graphics/fbcon/rotate)
-        case $rot in
-            1) angle="90";;
-            2) angle="180";;
-            3) angle="270";;
-            *) angle="0";;
-        esac
-        echo "${output} transform ${angle}" >> $SWAY_HOME/config
-        echo "${output} enable" >> $SWAY_HOME/config
-    else
-        echo "${output} disable" >> $SWAY_HOME/config
-    fi
-done
+echo "output * bg #000000 solid_color" >> $SWAY_HOME/config
+echo "output * max_render_time off" >> $SWAY_HOME/config
+
+# # Scan connectors
+# card=/sys/class/drm/card${card_no}
+# for connector in ${card}/card${card_no}*/
+# do
+#     con=$(basename $connector)
+#     con=${con: +6}
+#     output="output ${con}"
+#     # If dsi check rotation
+#     if [[ $con  == "DSI"* ]]; then
+#         rot=$(cat /sys/class/graphics/fbcon/rotate)
+#         case $rot in
+#             1) angle="90";;
+#             2) angle="180";;
+#             3) angle="270";;
+#             *) angle="0";;
+#         esac
+#         echo "${output} transform ${angle}" >> $SWAY_HOME/config
+#         echo "${output} enable" >> $SWAY_HOME/config
+#     else
+#         echo "${output} disable" >> $SWAY_HOME/config
+#     fi
+# done

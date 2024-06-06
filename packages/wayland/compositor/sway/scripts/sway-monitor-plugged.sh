@@ -20,8 +20,8 @@ then
 elif [ $(cat /sys/class/drm/${device}/status) == "disconnected" ];
 then
     systemctl stop essway.service                      # stop essway service
-    swaymsg output "${external}" disable                # turn external display off
-    swaymsg output "${internal}" enable                 # turn internal display on
+    swaymsg output "${external}" disable               # turn external display off
+    swaymsg output "${internal}" enable                # turn internal display on
     systemctl start essway.service
 else  # Do nothing if device status is unreadable
     exit
