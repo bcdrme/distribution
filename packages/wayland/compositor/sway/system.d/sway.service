@@ -8,11 +8,10 @@ ConditionKernelCommandLine=!installer
 Environment=HOME=/storage
 Environment=XDG_RUNTIME_DIR=/var/run/0-runtime-dir
 Environment=WLR_BACKENDS=drm,libinput
-EnvironmentFile=-/storage/.config/profile.d/095-sway
 EnvironmentFile=/usr/share/sway/sway-daemon.conf
 EnvironmentFile=-/run/sway/sway-daemon.conf
 WorkingDirectory=/storage
-ExecStartPre=-/usr/lib/sway/sway-config
+ExecStartPre=-/usr/lib/sway/sway-config.sh
 ExecStart=/usr/bin/sway.sh
 Restart=always
 RestartSec=5

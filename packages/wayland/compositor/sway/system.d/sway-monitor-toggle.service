@@ -1,10 +1,8 @@
 [Unit]
 Description=Handle monitor plug events
-After=essway.service
 
 [Service]
 Type=simple
-User=root
 Environment=SWAYSOCK=/var/run/0-runtime-dir/sway-ipc.0.sock
 ExecStart=/usr/bin/sway-monitor-plugged.sh
 
