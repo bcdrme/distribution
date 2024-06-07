@@ -15,7 +15,6 @@ SWAY_CONFIG_COLOR_DEFAULT=${SWAY_CONFIG_SHAREDIR}/colorscheme
 SWAY_CONFIG_DAEMON=${SWAY_CONFIG_BASEDIR}/sway-daemon.conf
 SWAY_CONFIG_DAEMON_DEFAULT=${SWAY_CONFIG_SHAREDIR}/sway-daemon.conf
 SWAY_CONFIG_USER=${SWAY_CONFIG_BASEDIR}/config
-SWAY_CONFIG_USER_DEFAULT=${SWAY_CONFIG_SHAREDIR}/config.kiosk
 SWAY_CONFIG_RUN=${SWAY_RUNTIME_DIR}/sway-daemon.conf
 
 if [ ! -d "$XDG_RUNTIME_DIR" ]; then
@@ -47,7 +46,9 @@ echo SWAY_DAEMON_ARGS=\"${SWAY_DAEMON_CONF} ${SWAY_DAEMON_ARGS}\" > ${SWAY_CONFI
 
 # Copy default config to user config
 rm -f ${SWAY_CONFIG_USER}
-cp ${SWAY_CONFIG_USER_DEFAULT} ${SWAY_CONFIG_BASEDIR}
+
+echo "seat * hide_cursor 100" >> $SWAY_CONFIG_USER
+echo "default_border none" >> $SWAY_CONFIG_USER
 
 # Generate user config by scanning connectors
 card_no=$(ls /sys/class/drm/ | grep -E "HDMI|DSI" | head -n 1 | cut -b 5)
