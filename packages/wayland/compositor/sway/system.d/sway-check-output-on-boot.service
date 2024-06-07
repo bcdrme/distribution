@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable internal screen if HDMI is plugged in
+After=sway.service
+Before=essway.service
+
+[Service]
+Type=oneshot
+Environment=SWAYSOCK=/var/run/0-runtime-dir/sway-ipc.0.sock
+ExecStart=/usr/bin/sway-monitor-plugged.sh
+
+[Install]
+WantedBy=rocknix.target
